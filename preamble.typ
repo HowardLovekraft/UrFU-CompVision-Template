@@ -25,6 +25,13 @@
 
   // Доп. отступ под заголовками
   show heading: set block(below: 0.9em)
+  show heading: it => {
+    if it.body == [Введение] or it.body == [Заключение] {
+      upper(it)
+    } else {
+      it
+    }
+  }
 
   // Особенности шаблона
   // Сохранение в заголовках 14pt
@@ -34,6 +41,7 @@
   show figure.caption: set text(size: 12pt)
 
   // 12pt шрифт в таблицах
+  show table: set align(left)
   show table: set text(size: 12pt)
 
   // Отключение отступа красной строки в таблицах
@@ -55,6 +63,7 @@
   ]
 
   // Формат подписи таблиц
+  show figure.caption.where(kind: table): set par(first-line-indent: 0pt)
   show figure.caption.where(kind: table): it => align(left)[
     #it.supplement
     #context it.counter.display(it.numbering)
@@ -76,3 +85,5 @@
 #let sign = math.op("sign")
 #let sigmoid = math.op("sigmoid")
 #let argmax = math.op("argmax", limits: true)
+
+#let gost_heading = it => align(center)[#heading(numbering: none)[#it]]

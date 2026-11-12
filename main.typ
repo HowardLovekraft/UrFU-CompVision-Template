@@ -4,9 +4,7 @@
 #show: preamble
 #show: title
 
-#align(center)[
-  #heading(numbering: none)[Введение]
-]
+#gost_heading[Введение]
 Цель работы: \
 ...
 
@@ -88,7 +86,7 @@
 
 
 #pagebreak()
-#align(center)[#heading(numbering: none)[Заключение]]
+#gost_heading[Заключение]
 В результате выполнения лабораторной работы:
 - изучено(а) ...
 - построена модель, достигнуто значение метрики Mean F1 = ... %;
@@ -97,5 +95,5 @@
 
 
 // Странная секция. Мб Кирилл Игоревич ее отменит.
-#align(center)[#heading(numbering: none)[Список использованных источников]]
+#gost_heading[Список использованных источников]
 
