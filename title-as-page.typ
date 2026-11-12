@@ -3,7 +3,11 @@
 
 #let academic-group = [РИ-340917]
 #let topic = [YOUR TOPIC]
-#let author = [YOUR NAME AND SURNAME]
+// Формат: Фамилия И.О.
+// В шаблоне почему-то написано "И.О. Фамилия"
+// Мне кажется это опечатка
+#let author = [YOUR SURNAME AND FIRSTNAME]
+
 
 #let title(doc) = {
   set document(title: topic)
@@ -34,7 +38,7 @@
   align(right)[
     Выполнил(а): студент(ка) группы #academic-group
 
-    #author (подпись) И. О. Фамилия
+    #box(width: 4cm, stroke: (bottom: 0.5pt)) (подпись) #author
   ]
 
   align(right)[

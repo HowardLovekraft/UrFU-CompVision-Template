@@ -31,9 +31,13 @@
   show heading: set text(size: 14pt)
 
   // 12pt шрифт в подписях рисунков и таблиц
-  show figure.where(kind: image): it => text(size: 12pt)[#it]
-  show figure.where(kind: table): it => text(size: 12pt)[#it]
-  show figure.where(kind: table): set par(first-line-indent: 0pt)
+  show figure.caption: set text(size: 12pt)
+
+  // 12pt шрифт в таблицах
+  show table: set text(size: 12pt)
+
+  // Отключение отступа красной строки в таблицах
+  show table.cell: set par(first-line-indent: 0pt)
 
   // Подписи таблиц сверху
   show figure.where(kind: table): set figure.caption(position: top)
@@ -42,12 +46,20 @@
   show figure.where(kind: image): set figure(supplement: "Рисунок")
 
   // Формат подписи рисунков
-  show figure.caption: it => [
+  show figure.caption.where(kind: image): it => [
     #it.supplement
     #context it.counter.display(it.numbering)
     ---
     #it.body
-    #v(1em)  // Требование шаблона №8
+    #v(1em)
+  ]
+
+  // Формат подписи таблиц
+  show figure.caption.where(kind: table): it => align(left)[
+    #it.supplement
+    #context it.counter.display(it.numbering)
+    ---
+    #it.body
   ]
 
   // Подсветка ссылок
@@ -56,9 +68,6 @@
 
   // Центрирование "Содержания"
   show outline: it => align(center)[#it]
-
-  // 12pt шрифт в таблицах
-  show table: set text(size: 12pt)
 
   doc
 }
